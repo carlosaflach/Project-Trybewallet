@@ -1,0 +1,7 @@
+.expensesForm {
+  align-items: center;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+}
