@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../actions';
+import '../CSS/login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -35,9 +36,8 @@ class Login extends React.Component {
     const { email, password, disabled } = this.state;
     const { history, saveEmail } = this.props;
     return (
-      <div>
+      <div className="loginPage">
         <label htmlFor="emailId">
-          Email:
           <input
             type="email"
             data-testid="email-input"
@@ -46,12 +46,11 @@ class Login extends React.Component {
             value={ email }
             onChange={ this.handleChange }
             autoComplete="off"
-            placeholder="Insira o email"
+            placeholder="Type the email"
             required
           />
         </label>
         <label htmlFor="passwordId">
-          Password:
           <input
             type="password"
             data-testid="password-input"
@@ -59,7 +58,7 @@ class Login extends React.Component {
             name="password"
             value={ password }
             onChange={ this.handleChange }
-            placeholder="Insira a senha"
+            placeholder="Type the password"
             required
           />
         </label>
