@@ -11,14 +11,12 @@ export default class Selects extends Component {
           name={ name }
           data-testid={ datatestid }
           onChange={ onChange }
+          id={ name }
         >
-          {name !== 'currency' ? options.map((op, index) => (
-            <option key={ index } value={ op }>
+          { options.map((op, index) => (
+            <option key={ index } value={ op } id={ name } data-testid={ op }>
               { op }
-            </option>))
-            : options.map((op, index) => (
-              <option key={ index }>{ op }</option>
-            )) }
+            </option>))}
         </select>
       </label>
     );

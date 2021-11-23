@@ -15,10 +15,10 @@ class ExpensesForm extends Component {
     super();
     this.state = {
       value: 0,
+      currency: 'USD',
       description: '',
-      currency: '',
-      paymentMethod: '',
-      expenseCategory: '',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -36,8 +36,15 @@ class ExpensesForm extends Component {
 
   handleClick() {
     const { addExpenses } = this.props;
-    const { value, currency, paymentMethod, expenseCategory } = this.state;
-    addExpenses({ value, currency, paymentMethod, expenseCategory });
+    const { value, description, currency, method, tag } = this.state;
+    addExpenses({ value, description, currency, method, tag });
+    this.setState({
+      value: 0,
+      currency: 'USD',
+      description: '',
+      method: 'Dinheiro',
+      tag: '',
+    });
   }
 
   render() {
@@ -46,14 +53,14 @@ class ExpensesForm extends Component {
     return (
       <div className="expensesForm">
         <Inputs
-          type="number"
+          type="text"
           name="value"
           label="Valor: "
           value={ value }
           datatestid="value-input"
           onChange={ this.handleChange }
         />
-        {getCurrencies && (<Selects
+        {getCurrencies.length && (<Selects
           name="currency"
           label="Moeda: "
           datatestid="currency-input"
@@ -61,14 +68,14 @@ class ExpensesForm extends Component {
           onChange={ this.handleChange }
         />)}
         <Selects
-          name="paymentMethod"
+          name="method"
           label="Método de pagamento: "
           datatestid="method-input"
           options={ PAYMENT_METHODS }
           onChange={ this.handleChange }
         />
         <Selects
-          name="expenseCategory"
+          name="tag"
           label="Categoria: "
           datatestid="tag-input"
           options={ EXPENSE_TAGS }

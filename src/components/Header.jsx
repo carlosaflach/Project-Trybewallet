@@ -11,11 +11,14 @@ class Header extends Component {
     let valor = 0;
     let cambio = 0;
     let total = 0;
+    let acc = 0;
     expense.forEach((el) => {
       currency = el.currency;
       valor = el.value;
       cambio = el.exchangeRates[currency].ask;
       total = valor * cambio;
+      acc += total;
+      total = 0;
     });
 
     return (
@@ -28,10 +31,7 @@ class Header extends Component {
         <h3 data-testid="total-field">
           Gastos Totais:
           {' '}
-          {total.toLocaleString('pt-br', {
-            style: 'currency',
-            currency: 'BRL',
-          })}
+          {acc.toFixed(2)}
         </h3>
         <h3 data-testid="header-currency-field"> BRL </h3>
       </header>
