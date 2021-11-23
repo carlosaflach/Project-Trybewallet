@@ -7,22 +7,13 @@ export default class Inputs extends Component {
     return (
       <label htmlFor={ name }>
         { label }
-        { type === 'number' ? <input
+        <input
           type={ type }
           name={ name }
           value={ value }
           onChange={ onChange }
           data-testid={ datatestid }
-          min="0.00"
-          step="0.01"
-        /> : <input
-          type={ type }
-          name={ name }
-          value={ value }
-          onChange={ onChange }
-          data-testid={ datatestid }
-        /> }
-
+        />
       </label>
     );
   }

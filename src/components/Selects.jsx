@@ -3,20 +3,22 @@ import PropTypes from 'prop-types';
 
 export default class Selects extends Component {
   render() {
-    const { name, label, options, onChange, datatestid, id } = this.props;
+    const { name, label, options, onChange, datatestid } = this.props;
     return (
-      <label htmlFor={ id }>
+      <label htmlFor={ name }>
         { label }
         <select
           name={ name }
           data-testid={ datatestid }
-          id={ id }
           onChange={ onChange }
         >
           {name !== 'currency' ? options.map((op, index) => (
             <option key={ index } value={ op }>
               { op }
-            </option>)) : undefined }
+            </option>))
+            : options.map((op, index) => (
+              <option key={ index }>{ op }</option>
+            )) }
         </select>
       </label>
     );
@@ -29,5 +31,4 @@ Selects.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onChange: PropTypes.func.isRequired,
   datatestid: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
 };
