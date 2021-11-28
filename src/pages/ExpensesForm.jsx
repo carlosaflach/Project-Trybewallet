@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Inputs from '../components/Inputs';
 import Selects from '../components/Selects';
 import Button from '../components/Button';
+import Table from '../components/Table';
 import { addExpense, requestCurrencies } from '../actions/index';
 
 const PAYMENT_METHODS = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
@@ -22,6 +23,7 @@ class ExpensesForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleEntries = this.handleEntries.bind(this);
   }
 
   componentDidMount() {
@@ -47,7 +49,7 @@ class ExpensesForm extends Component {
     });
   }
 
-  render() {
+  handleEntries() {
     const { value, description } = this.state;
     const { getCurrencies } = this.props;
     return (
@@ -91,6 +93,15 @@ class ExpensesForm extends Component {
           onChange={ this.handleChange }
         />
         <Button onClick={ this.handleClick } />
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {this.handleEntries()}
+        <Table />
       </div>
     );
   }

@@ -45,7 +45,6 @@ class Login extends React.Component {
             name="email"
             value={ email }
             onChange={ this.handleChange }
-            autoComplete="off"
             placeholder="Type the email"
             required
           />
