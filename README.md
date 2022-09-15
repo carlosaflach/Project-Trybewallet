@@ -26,6 +26,9 @@ In this project I could apply the following skills:<br>
 * Redux Thunk
 
 
+> :heavy_exclamation_mark: CSS not implemented yet. :heavy_exclamation_mark:
+
+
 ### After downloading the project:
 
 ```
